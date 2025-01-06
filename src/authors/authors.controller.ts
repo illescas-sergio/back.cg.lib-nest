@@ -6,6 +6,8 @@ import {
   Param,
   Post,
   Put,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { AuthorsService } from './authors.service';
 import { authorDTO } from './author-DTO/author-DTO';
@@ -28,11 +30,13 @@ export class AuthorsController {
   }
 
   @Post('/')
+  @UsePipes(new ValidationPipe())
   addNewAuthor(@Body() author: authorDTO) {
     return this.authorsService.createAuthor(author);
   }
 
   @Put('/:id')
+  @UsePipes(new ValidationPipe())
   updateOneAuthor(@Param('id') id: string, @Body() author: authorDTO) {
     return this.authorsService.updateAuthor(id, author);
   }

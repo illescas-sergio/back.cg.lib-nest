@@ -6,6 +6,8 @@ import {
   Param,
   Post,
   Put,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { PublishersService } from './publishers.service';
 import { publisherDTO } from './publisher-DTO/publisher-DTO';
@@ -29,6 +31,7 @@ export class PublishersController {
   }
 
   @Post('/')
+  @UsePipes(new ValidationPipe())
   addPublisher(@Body() publisher: publisherDTO) {
     return this.publishersService.createPublisher(publisher);
   }
