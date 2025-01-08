@@ -15,5 +15,6 @@ import { PublisherSchema } from './publisherSchema/publisherSchema';
   ],
   controllers: [PublishersController],
   providers: [PublishersService],
+  exports: [PublishersService],
 })
 export class PublishersModule {}

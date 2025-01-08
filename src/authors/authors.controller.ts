@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -20,7 +21,16 @@ export class AuthorsController {
     this.authorsService = authorsService;
   }
   @Get('/')
-  getAllAuthors() {
+  getAllAuthors(
+    @Query('first_name') first_name: string,
+    @Query('last_name') last_name: string,
+  ) {
+    if (first_name && last_name) {
+      return this.authorsService.findAuthorByCompleteName(
+        first_name,
+        last_name,
+      );
+    }
     return this.authorsService.getAuthors();
   }
 

@@ -37,6 +37,7 @@ export class PublishersController {
   }
 
   @Put('/:id')
+  @UsePipes(new ValidationPipe())
   updatePublisherData(
     @Param('id') id: string,
     @Body() publisher: publisherDTO,

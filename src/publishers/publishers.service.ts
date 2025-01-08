@@ -19,6 +19,10 @@ export class PublishersService {
     return this.publisherModel.findById(id);
   }
 
+  async getPublisherByName(name: string): Promise<Publisher[]> {
+    return this.publisherModel.find({ name: name }).exec();
+  }
+
   async createPublisher(publisher: publisherDTO) {
     return this.publisherModel.create({
       name: publisher.name,

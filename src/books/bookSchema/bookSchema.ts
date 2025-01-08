@@ -11,7 +11,7 @@ export class Book {
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Author' }] })
   author: Author[];
 
-  @Prop({ type: { type: mongoose.Schema.Types.ObjectId, ref: 'Publisher' } })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Publisher' })
   publisher: Publisher[];
 
   @Prop()
@@ -23,7 +23,7 @@ export class Book {
   @Prop()
   price: number;
 
-  @Prop({ type: 'number' })
+  @Prop({ type: 'string' })
   release_date: mongoose.Date;
 
   @Prop()

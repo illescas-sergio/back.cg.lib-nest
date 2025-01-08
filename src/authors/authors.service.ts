@@ -43,4 +43,18 @@ export class AuthorsService {
   async deleteAuthor(id: string) {
     return this.authorModel.deleteOne({ _id: id });
   }
+
+  async findAuthorByCompleteName(first_name: string, last_name: string) {
+    console.log(first_name, last_name);
+    return this.authorModel
+      .find({ first_name: first_name, last_name: last_name })
+      .exec();
+  }
+
+  async findAuthorIdByCompleteName(first_name: string, last_name: string) {
+    const author = await this.authorModel
+      .find({ first_name: first_name, last_name: last_name })
+      .exec();
+    return author;
+  }
 }
